@@ -1,7 +1,4 @@
-# LOG2990
-
-Projet de base à utiliser pour démarrer le développement de votre application.
-
+Projet : création d'une application web de dessin matriciel
 # Important
 
 Les commandes commençant par `npm` devront être exécutées dans les dossiers `client` et `server`. Les scripts non-standard doivent être lancés en faisant `npm run myScript`.
