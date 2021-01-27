@@ -1,0 +1,34 @@
+<div class="container">
+    <h1 class="header-item">Simplement, Poly Dessin</h1>
+
+    <mat-list>
+        <mat-list-item>
+            <button mat-raised-button color="primary" class="main-menu-button" (click)="createNewDrawing()">
+                <mat-icon>add</mat-icon>
+                Créer un nouveau dessin
+            </button>
+        </mat-list-item>
+        <mat-list-item *ngIf="onGoingDrawing">
+            <button mat-raised-button class="main-menu-button" (click)="continueDrawing()">
+                <mat-icon>play_arrow</mat-icon>
+                Continuer un dessin
+            </button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-raised-button [disabled]="isThereExistingDrawing" class="main-menu-button" (click)="openCarrousel()">
+                <mat-icon>view_carousel</mat-icon>
+                Ouvrir le carrousel de dessins
+            </button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-raised-button class="main-menu-button" (click)="openUserGuide()">
+                <mat-icon>article</mat-icon>
+                Ouvrir la documentation
+            </button>
+        </mat-list-item>
+    </mat-list>
+
+    <div class="footer-item">
+        <p>Travail effectué avec ❤ par Tai Chen Li, Alphonse Desrosiers, Hugo Lachieze-Rey, John Maliha, Lucas Tassaux et Victor Kim</p>
+    </div>
+</div>

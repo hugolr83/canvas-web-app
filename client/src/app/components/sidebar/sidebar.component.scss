@@ -1,0 +1,68 @@
+.sidebar {
+    min-width: 326px;
+}
+
+.toolbar {
+    position: relative;
+    top: 0;
+    height: 100%;
+    text-align: center;
+    float: left;
+}
+
+.small-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    width: 100px;
+}
+
+.attributes {
+    position: relative;
+    top: 0;
+    margin: 0px;
+    width: 226px;
+    float: right;
+}
+
+mat-slider {
+    width: 90%;
+}
+
+.tools-group {
+    flex-wrap: wrap;
+}
+
+.fix-crayan {
+    margin-left: 1px;
+}
+
+.tools-buttons {
+    position: relative;
+    height: auto;
+    //margin-top: -8px;
+}
+.bottom-button {
+    text-align: left;
+}
+
+.miscellaneous-buttons {
+    position: relative;
+    width: 100px;
+}
+
+.sub-button {
+    width: 150px;
+}
+
+.select {
+    position: relative;
+    margin-top: 10px;
+}
+
+.mat-button {
+    min-width: 20px;
+    padding: 0 13px;
+}

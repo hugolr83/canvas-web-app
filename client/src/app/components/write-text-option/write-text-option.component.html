@@ -1,0 +1,38 @@
+<mat-form-field appearance="fill">
+    <mat-label>Taille de la police : </mat-label>
+    <mat-select [(ngModel)]="textService.sizeFont">
+        <mat-option *ngFor="let size of textService.possibleSizeFont" [value]="size">
+            {{ size }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Choix de la police : </mat-label>
+    <mat-select [(ngModel)]="textService.fontStyle">
+        <mat-option *ngFor="let font of textService.possibleFont" [value]="font">
+            {{ font }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<div>
+    <mat-label> Choisissez la position du texte</mat-label>
+    <mat-button-toggle-group vertical="true">
+        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickFontStyle(1)">
+            <mat-icon>align_horizontal_center</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickFontStyle(2)">
+            <mat-icon>align_horizontal_left</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickFontStyle(3)">
+            <mat-icon>align_horizontal_right</mat-icon>
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+<div>
+    <mat-label> Choisissez effet du texte</mat-label>
+    <div>
+        <mat-button-toggle id="btn-bold" (click)="pickBold()"><strong>Gras</strong></mat-button-toggle>
+        <mat-button-toggle id="btn-italic" (click)="pickItalic()"><i>Italique</i></mat-button-toggle>
+    </div>
+</div>

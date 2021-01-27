@@ -1,0 +1,52 @@
+<div>
+    <h1>Téléverser une image vers le serveur</h1>
+</div>
+<mat-grid-list cols="3" rowHeight="1:1">
+    <mat-grid-tile>
+        <mat-label>
+            Consignes pour le nom :<br />Il doit être sans espacement ou sans caractère,<br />
+            Les caractères non autorisés sont : / ! " ' % ? & * # |
+        </mat-label>
+        <mat-form-field appearance="legacy">
+            <mat-label>Nom de l'image</mat-label>
+            <input id="textName" type="text" matInput [(ngModel)]="textName" />
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-label>
+            Consigne pour créer une étiquette <br />Chaque nouvelle étiquette doit être séparée #, aucun espace autorisé et un maximum de 20
+            caractère.<br />
+            Les caractères non autorisés sont : / ! " ' % ? & * |
+        </mat-label>
+        <mat-form-field appearance="legacy">
+            <mat-label>Créer des étiquettes</mat-label>
+            <textarea matInput [(ngModel)]="textLabel"></textarea>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-raised-button (click)="saveServer()" [disabled]="checkName(textName) || saveLoad">Sauvegarder sur le serveur</button>
+    </mat-grid-tile>
+</mat-grid-list>
+<div>
+    <p class="errer" *ngIf="checkName(textName)">Name : Une ou plusieurs non respect des consignes</p>
+    <p class="errer" *ngIf="notGoodCharacter(textName)">Name : Les caractères non autorisés sont : / ! " ' % ? & * # |</p>
+    <p class="errer" *ngIf="errorTextLabel">Une ou plusieurs erreurs dans les étiquette</p>
+    <p class="errer" *ngIf="checkLabel(textLabel)">Étiquette :aucun espace ou les caractères non autorisés sont : / ! " ' % ? & * |</p>
+</div>
+<div>
+    <h1>Liste d'étiquettes existantes</h1>
+    <p *ngIf="!dataLabel.length">Appuyer sur le button "rafraichir la liste" d'étiquettes</p>
+    <button mat-raised-button (click)="refresh()">Rafraichir la liste</button>
+    <div>
+        <mat-button-toggle
+            *ngFor="let element of dataLabel"
+            class="sub-button"
+            mat-button
+            color="primary"
+            id="{{ element.label }}"
+            (click)="isLabelExisting(element.label)"
+            >{{ element.label }}
+        </mat-button-toggle>
+    </div>
+</div>
+<button mat-raised-button mat-dialog-close>Fermé</button>

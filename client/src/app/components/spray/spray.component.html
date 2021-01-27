@@ -1,0 +1,8 @@
+<mat-slider min="1" max="100" value="1" step="1" [(ngModel)]="sprayService.density"> </mat-slider>
+<div>Nombre d'émission : {{ sprayService.density }} goutelettes</div>
+
+<mat-slider min="1" max="5" value="1" step="1" [(ngModel)]="sprayService.dropDiameter"> </mat-slider>
+<div>Diamètre des gouttes : {{ sprayService.dropDiameter }}</div>
+
+<mat-slider min="1" max="200" value="1" step="1" [(ngModel)]="sprayService.zoneDiameter"> </mat-slider>
+<div>Diamètre du jet : {{ sprayService.zoneDiameter }}</div>

@@ -1,0 +1,33 @@
+<div>
+    <h1>Exporter localement</h1>
+</div>
+<mat-dialog-content>
+    <mat-button-toggle-group name="imageType">
+        <mat-button-toggle (click)="checkJPG()">JPG</mat-button-toggle>
+        <mat-button-toggle (click)="checkPNG()">PNG</mat-button-toggle>
+    </mat-button-toggle-group>
+    <br />
+    <mat-button-toggle-group name="filterType">
+        <mat-button-toggle (click)="checkNone()">Aucun</mat-button-toggle>
+        <mat-button-toggle (click)="checkFirst()">Brouillard</mat-button-toggle>
+        <mat-button-toggle (click)="checkSecond()">Gris</mat-button-toggle>
+        <mat-button-toggle (click)="checkThird()">Inversion</mat-button-toggle>
+        <mat-button-toggle (click)="checkFourth()">Lumineux</mat-button-toggle>
+        <mat-button-toggle (click)="checkFifth()">Sépia</mat-button-toggle>
+    </mat-button-toggle-group>
+    <br />
+    <img #previewImage />
+    <br />
+    <mat-grid-list cols="2" rowHeight="70px">
+        <mat-grid-tile colspan="1">
+            <mat-form-field class="name-form-field">
+                <mat-label>Nom de fichier</mat-label>
+                <input matInput [formControl]="nameFormControl" placeholder="fichier image" />
+                <mat-hint>Ex. nomDeFichierImage</mat-hint>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1">
+            <button mat-raised-button (click)="downloadImage()">Télécharger l'image</button>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-dialog-content>

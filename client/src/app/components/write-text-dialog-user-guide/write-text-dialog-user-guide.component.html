@@ -1,0 +1,28 @@
+<div class="btnWhichUserGuide">
+    <h1 class="titleUserGuide">Guide d'utilisation</h1>
+    <p class="description">
+        Bienvenue dans le guide d'utilisation contenant les informations de base sur l'utilisation de notre application Poly Dessin.
+    </p>
+    <p class="description">
+        Ici, vous trouverez comment utiliser les outils disponibles ainsi que leurs descriptions. Dans l'onglet <i>Divers</i> se trouvent les
+        informations sur la base de l'application et l'onglet <i>Dessiner</i> couvrent les outils disponibles.
+    </p>
+    <mat-list class="tools-buttons">
+        <mat-button-toggle-group>
+            <mat-button-toggle (click)="diversListSelection()"> Divers </mat-button-toggle>
+            <mat-button-toggle (click)="drawListSelection()"> Dessiner </mat-button-toggle>
+            <mat-button-toggle (click)="shortcutsListSelection()"> Raccourcis clavier </mat-button-toggle>
+        </mat-button-toggle-group>
+    </mat-list>
+</div>
+<div *ngFor="let tool of dataGuides">
+    <div *ngIf="testDataGuide(tool.isTool)">
+        <h1>{{ tool.title }}</h1>
+        <p class="descriptionTool">
+            {{ tool.description }}
+        </p>
+        <img *ngIf="testSelection()" class="pictureSize" src="{{ tool.gifPath }}" />
+        <img class="pictureSize" src="{{ tool.screenshotPath }}" />
+        <div class="btnClose"><button mat-raised-button mat-dialog-close>Fermer</button></div>
+    </div>
+</div>

@@ -1,0 +1,508 @@
+<div class="sidebar">
+    <div class="toolbar">
+        <div class="small-buttons">
+            <mat-list class="tools-buttons">
+                <mat-button-toggle-group class="tools-group">
+                    <mat-button-toggle
+                        class="fix-crayan"
+                        (click)="pickPencil()"
+                        [checked]="pencilChecked"
+                        matTooltip="Outil crayon"
+                        matTooltipPosition="right"
+                    >
+                        <mat-icon>edit</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="pickEraser()" [checked]="eraserChecked" matTooltip="Outil efface" matTooltipPosition="right">
+                        <mat-icon svgIcon="eraser"></mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="pickBrush(1)" [checked]="brushChecked" matTooltip="Outil pinceau" matTooltipPosition="right">
+                        <mat-icon>brush</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="pickLine()" [checked]="lineChecked" matTooltip="Outil ligne" matTooltipPosition="right">
+                        <mat-icon>horizontal_rule</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="pickText()" [checked]="textChecked" matTooltip="Outil Texte" matTooltipPosition="right">
+                        <mat-icon>Title</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle
+                        (click)="pickRectangle(1)"
+                        [checked]="rectangleChecked"
+                        matTooltip="Outil rectangle"
+                        matTooltipPosition="right"
+                    >
+                        <mat-icon>crop_16_9</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="pickEllipse(1)" [checked]="ellipseChecked" matTooltip="Outil ellipse" matTooltipPosition="right">
+                        <mat-icon>panorama_fish_eye</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="pickPolygon(1)" [checked]="polygonChecked" matTooltip="Outil polygone" matTooltipPosition="right">
+                        <mat-icon svgIcon="polygon"></mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle
+                        (click)="pickPaintBucket()"
+                        [checked]="paintBucketChecked"
+                        matTooltip="Outil sceau de peinture"
+                        matTooltipPosition="right"
+                        ><mat-icon svgIcon="paint-bucket"></mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle
+                        (click)="pickColor()"
+                        [checked]="colorChecked"
+                        matTooltip="Sélectionner les couleurs"
+                        matTooltipPosition="right"
+                    >
+                        <mat-icon>color_lens</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="pickDropper()" [checked]="dropperChecked" matTooltip="Outil pipette" matTooltipPosition="right">
+                        <mat-icon>colorize</mat-icon>
+                    </mat-button-toggle>
+
+                    <mat-button-toggle
+                        (click)="pickSelectionRectangle()"
+                        [checked]="selectionRectangleChecked"
+                        matTooltip="Sélection et déplacer un rectangle"
+                        matTooltipPosition="right"
+                    >
+                        <mat-icon>crop_free</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="pickGridSettings()" matTooltip="Paramètres pour la grille" matTooltipPosition="right"
+                        ><mat-icon>tune</mat-icon></mat-button-toggle
+                    >
+
+                    <mat-button-toggle (click)="pickStamp()" [checked]="stampChecked" matTooltip="Outil Etampe" matTooltipPosition="right">
+                        <mat-icon>radio_button_checked</mat-icon>
+                    </mat-button-toggle>
+
+                    <mat-button-toggle (click)="pickSprayer()" [checked]="sprayChecked" matTooltip="Sélection l'aerosol" matTooltipPosition="right">
+                        <mat-icon>blur_on</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="pickFeather()" [checked]="selectionFeatherChecked" matTooltip="Outil plume" matTooltipPosition="right"
+                        ><mat-icon svgIcon="feather"></mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </mat-list>
+
+            <div class="bottom-button">
+                <mat-list class="miscellaneous-buttons">
+                    <button
+                        mat-button
+                        matTooltip="Annuler"
+                        matTooltipPosition="right"
+                        (click)="btnCallUndo()"
+                        [disabled]="undoRedoService.isUndoDisabled"
+                    >
+                        <mat-icon> undo </mat-icon>
+                    </button>
+                    <button
+                        mat-button
+                        matTooltip="Refaire"
+                        matTooltipPosition="right"
+                        (click)="btnCallRedo()"
+                        [disabled]="undoRedoService.isRedoDisabled"
+                    >
+                        <mat-icon> redo </mat-icon>
+                    </button>
+                    <mat-button-toggle
+                        mat-button
+                        matTooltip="Grille"
+                        matToolTipPosition="right"
+                        (click)="btnCallGrid()"
+                        [checked]="gridService.isGridSettingsChecked"
+                    >
+                        <mat-icon>grid_on</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle-group vertical="true">
+                        <mat-button-toggle (click)="openSaveServer()" matTooltip="Téléverser vers le serveur" matTooltipPosition="right">
+                            <mat-icon>cloud_upload</mat-icon>
+                        </mat-button-toggle>
+                        <mat-button-toggle (click)="openCarrousel()" matTooltip="Télécharger du serveur" matTooltipPosition="right">
+                            <mat-icon>cloud_download</mat-icon>
+                        </mat-button-toggle>
+                        <mat-button-toggle (click)="exportDrawing()" matTooltip="Exportation locale" matTooltipPosition="right">
+                            <mat-icon>save</mat-icon>
+                        </mat-button-toggle>
+                        <mat-button-toggle (click)="exportEmail()" matTooltip="Exportation par courriel" matTooltipPosition="right">
+                            <mat-icon>email</mat-icon>
+                        </mat-button-toggle>
+                        <mat-button-toggle appearance="radio" (click)="createNewDrawing()" matTooltip="Nouveau dessin" matTooltipPosition="right">
+                            <mat-icon>add</mat-icon>
+                        </mat-button-toggle>
+                        <mat-button-toggle (click)="openUserGuide()" matTooltip="Guide d'utilisation" matTooltipPosition="right">
+                            <mat-icon>article</mat-icon>
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </mat-list>
+            </div>
+        </div>
+    </div>
+    <div class="toolbar">
+        <div class="attributes" [ngSwitch]="this.toolService.currentToolName">
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.NONE"> </mat-grid-list>
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Pencil">
+                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> Changer la taille du crayon </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider min="1" max="50" value="1" step="1" [(ngModel)]="pencilService.pencilSize"> </mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> Taille du crayon : {{ pencilService.pencilSize }} px </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="2">
+                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> Changer la taille de l'efface </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider min="5" max="50" value="1" step="0.5" [(ngModel)]="eraserService.eraserWidth"> </mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> Valeur minimale : 5px </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> Taille de l'efface : {{ eraserService.eraserWidth }} px </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Brush">
+                <mat-grid-tile colspan="6"></mat-grid-tile>
+                <mat-grid-tile colspan="6"> Choisissez l'un des pinceaux</mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="7">
+                    <mat-button-toggle-group vertical="true">
+                        <mat-button-toggle class="sub-button" (click)="pickBrush(1)">Pinceau 1</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" (click)="pickBrush(2)">Pinceau 2</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" (click)="pickBrush(3)">Pinceau 3</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" (click)="pickBrush(4)">Pinceau 4</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" (click)="pickBrush(5)">Pinceau 5</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider max="50" min="1" [(ngModel)]="brushService.lineWidth"> </mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> Taille du pinceau : {{ brushService.lineWidth }} px </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Line">
+                <mat-grid-tile colspan="6"></mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2">
+                    Pour quiter l'outil Ligne effectuez <br />
+                    un double clic gauche avec votre souris</mat-grid-tile
+                >
+                <mat-grid-tile colspan="6">
+                    <mat-slider max="50" min="1" [(ngModel)]="lineService.lineWidth"> </mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6">Épaisseur de la ligne: {{ lineService.lineWidth }}px</mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-checkbox [(ngModel)]="lineService.isBallOn" (change)="checkboxChangeToggle($event)">Avec Point</mat-checkbox>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider max="50" min="1" step="1" [(ngModel)]="lineService.secondarySizePixel"> </mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6">Épaisseur de la boule: {{ lineService.secondarySizePixel }}px</mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list class="select" cols="6" *ngSwitchCase="toolUsed.Text">
+                <app-write-text-option></app-write-text-option>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Rectangle">
+                <mat-grid-tile colspan="6"></mat-grid-tile>
+                <mat-grid-tile colspan="6"> Choisissez un type de rectangle</mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="4">
+                    <mat-button-toggle-group vertical="true">
+                        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickRectangle(1)">Plein</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickRectangle(2)">Contour</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickRectangle(3)"
+                            >Plein avec contour</mat-button-toggle
+                        >
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2"> Ce slider permet de modifier l'épaisseur du trait de contour des rectangles</mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider min="1" max="50" step="1" [(ngModel)]="rectangleService.lineWidth"></mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    Épaisseur du contour : <samp> {{ rectangleService.lineWidth }} </samp>px
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Ellipse">
+                <mat-grid-tile colspan="6"></mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="4">
+                    <mat-grid-tile colspan="6"> Choisissez un type d'ellipse</mat-grid-tile>
+
+                    <mat-button-toggle-group vertical="true">
+                        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickEllipse(1)">Plein</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickEllipse(2)">Contour</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickEllipse(3)"
+                            >Plein avec contour</mat-button-toggle
+                        >
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="3"> Ce slider permet de modifier l'épaisseur des lignes des coutours de l'ellipse</mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider min="1" max="50" step="1" [(ngModel)]="ellipseService.lineWidth"></mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6">Épaisseur du contour: {{ ellipseService.lineWidth }}px</mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list class="select" cols="6" *ngSwitchCase="toolUsed.Polygon">
+                <mat-grid-tile colspan="6"></mat-grid-tile>
+                <mat-form-field colspan="6" appearance="fill">
+                    <mat-label>Nombre de côté</mat-label>
+                    <mat-select [(ngModel)]="polygonService.numberOfSides">
+                        <mat-option *ngFor="let side of polygonService.possibleNbSides" [value]="side">
+                            {{ side }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-grid-tile colspan="6"> Choisissez un type de polygone</mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="4">
+                    <mat-button-toggle-group vertical="true">
+                        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickPolygon(1)">Plein</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickPolygon(2)">Contour</mat-button-toggle>
+                        <mat-button-toggle class="sub-button" mat-button color="primary" (click)="pickPolygon(3)"
+                            >Plein avec contour</mat-button-toggle
+                        >
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="3"> Ce slider permet de modifier l'épaisseur des lignes des coutours du polygone</mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider min="1" max="50" step="1" [(ngModel)]="polygonService.lineWidth"></mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6">Épaisseur du contour: {{ polygonService.lineWidth }}px</mat-grid-tile></mat-grid-list
+            >
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.SelectionRectangle">
+                <mat-grid-tile colspan="6"></mat-grid-tile>
+                <mat-grid-tile colspan="6"> Choisissez une forme de sélection</mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="4">
+                    <mat-button-toggle-group vertical="true">
+                        <mat-button-toggle class="sub-button" mat-button color="primary" [checked]="true" (click)="pickSelectionRectangle()">
+                            Rectangle
+                        </mat-button-toggle>
+                        <mat-button-toggle
+                            class="sub-button"
+                            mat-button
+                            color="primary"
+                            [checked]="selectionEllipseChecked"
+                            (click)="pickSelectionEllipse()"
+                        >
+                            Ellipse
+                        </mat-button-toggle>
+                        <mat-button-toggle
+                            class="sub-button"
+                            mat-button
+                            color="primary"
+                            [checked]="MagicWandSelectionChecked"
+                            (click)="pickMagicWandSelection()"
+                            >Baguette magique</mat-button-toggle
+                        >
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2"> Ce bouton permet de sélectionner tous le dessin</mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2">
+                    <button mat-raised-button (click)="selectionRectangleService.selectAll()">Sélectionner tout le dessin</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile colspan="6"> Valeur de l'angle de rotation </mat-grid-tile>
+                <mat-grid-tile colspan="6"> {{ selectionRectangleService.selection.rotationAngle }} degrés </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2">
+                    Il est possible de changer l'angle <br />
+                    de rotation du rectangle avec la <br />
+                    roulette (15 degrés) ou avec alt <br />
+                    et la roulette (1 degré)
+                </mat-grid-tile>
+                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="4">
+                    <mat-button-toggle-group vertical="true">
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="selectionRectangleService.copyImage()">
+                            copier
+                        </button>
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="selectionRectangleService.pasteImage()">
+                            coller
+                        </button>
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="selectionRectangleService.cutImage()">
+                            couper
+                        </button>
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="selectionRectangleService.deleteImage()">
+                            supprimer
+                        </button>
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.SelectionEllipse">
+                <mat-grid-tile colspan="6"></mat-grid-tile>
+                <mat-grid-tile colspan="6"> Choisissez une forme de sélection</mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="4">
+                    <mat-button-toggle-group vertical="true">
+                        <mat-button-toggle
+                            class="sub-button"
+                            mat-button
+                            color="primary"
+                            [checked]="selectionRectangleChecked"
+                            (click)="pickSelectionRectangle()"
+                            >Rectangle</mat-button-toggle
+                        >
+                        <mat-button-toggle class="sub-button" mat-button color="primary" [checked]="true" (click)="pickSelectionEllipse()"
+                            >Ellipse</mat-button-toggle
+                        >
+                        <mat-button-toggle
+                            class="sub-button"
+                            mat-button
+                            color="primary"
+                            [checked]="MagicWandSelectionChecked"
+                            (click)="pickMagicWandSelection()"
+                            >Baguette magique</mat-button-toggle
+                        >
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2"> Ce bouton permet de sélectionner tous le dessin</mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2">
+                    <button mat-raised-button (click)="selectionEllipseService.selectAll()">Sélectionner tout le dessin</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile colspan="6"> Valeur de l'angle de rotation </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <samp>{{ selectionEllipseService.selection.rotationAngle }} degrés</samp>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2">
+                    Il est possible de changer l'angle de rotation de l'ellipse avec : la roulette (15 degrés) ou avec alt et la roulette (1 degré)
+                </mat-grid-tile>
+                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="6">
+                    <mat-button-toggle-group vertical="true">
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="selectionEllipseService.copyImage()">
+                            copier
+                        </button>
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="selectionEllipseService.pasteImage()">
+                            coller
+                        </button>
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="selectionEllipseService.cutImage()">
+                            couper
+                        </button>
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="selectionEllipseService.deleteImage()">
+                            supprimer
+                        </button>
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.MagicWand">
+                <mat-grid-tile colspan="6"></mat-grid-tile>
+                <mat-grid-tile colspan="6"> Choisissez une forme de sélection</mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="4">
+                    <mat-button-toggle-group vertical="true">
+                        <mat-button-toggle
+                            class="sub-button"
+                            mat-button
+                            color="primary"
+                            [checked]="selectionRectangleChecked"
+                            (click)="pickSelectionRectangle()"
+                            >Rectangle</mat-button-toggle
+                        >
+                        <mat-button-toggle
+                            class="sub-button"
+                            mat-button
+                            color="primary"
+                            [checked]="selectionEllipseChecked"
+                            (click)="pickSelectionEllipse()"
+                            >Ellipse</mat-button-toggle
+                        >
+                        <mat-button-toggle class="sub-button" mat-button color="primary" [checked]="true" (click)="pickMagicWandSelection()"
+                            >Baguette magique</mat-button-toggle
+                        >
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2"> Ce bouton permet de sélectionner tous le dessin</mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2">
+                    <button mat-raised-button (click)="buttonSelectAllMagicWand()">Sélectionner tout le dessin</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile colspan="6"> Valeur de l'angle de rotation </mat-grid-tile>
+                <mat-grid-tile colspan="6"> {{ magicWandService.selection.rotationAngle }} degrés </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2">
+                    Il est possible de changer l'angle de rotation du rectangle avec : la roulette (15 degrés) ou avec alt et la roulette (1 degré)
+                </mat-grid-tile>
+                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="4">
+                    <mat-button-toggle-group vertical="true">
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="magicWandService.copyImage()">
+                            copier
+                        </button>
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="magicWandService.pasteImage()">
+                            coller
+                        </button>
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="magicWandService.cutImage()">
+                            couper
+                        </button>
+                        <button mat-raised-button class="sub-button" mat-button color="secondary" (click)="magicWandService.deleteImage()">
+                            supprimer
+                        </button>
+                    </mat-button-toggle-group>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Color">
+                <app-color></app-color>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.PaintBucket">
+                <app-paint-bucket-color></app-paint-bucket-color>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Dropper">
+                <app-dropper-color></app-dropper-color>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Stamp">
+                <app-stamp></app-stamp>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Grid">
+                <mat-grid-tile colspan="6">
+                    <b>Paramètres pour la grille</b>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> Changer l'opacité du quadrillé </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        [(ngModel)]="gridService.opacity"
+                        (ngModelChange)="gridService.activateGrid()"
+                    ></mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> La valeur alpha : {{ gridService.opacity }} </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> Changer la largeur de chaque carrée </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider
+                        min="5"
+                        max="500"
+                        step="1"
+                        [(ngModel)]="gridService.squareWidth"
+                        (ngModelChange)="gridService.activateGrid()"
+                    ></mat-slider>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" aria-rowspan="8"> Taille en pixels d'un côté : {{ gridService.squareWidth }} px </mat-grid-tile>
+            </mat-grid-list>
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Spray">
+                <app-spray></app-spray>
+            </mat-grid-list>
+
+            <mat-grid-list cols="6" *ngSwitchCase="toolUsed.Feather">
+                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile colspan="6"> Changer la longueur du trait </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider max="40" min="1" [(ngModel)]="featherService.featherLength"> </mat-slider>{{ featherService.featherLength }}px
+                </mat-grid-tile>
+
+                <mat-grid-tile> </mat-grid-tile>
+                <mat-grid-tile colspan="6"> Changer l'angle du trait </mat-grid-tile>
+                <mat-grid-tile colspan="6">
+                    <mat-slider max="360" min="0" [(ngModel)]="featherService.featherAngle"> </mat-slider>
+                    {{ featherService.featherAngle }}degrés
+                </mat-grid-tile>
+                <mat-grid-tile colspan="6" rowspan="2">
+                    Il est possible de changer l'angle de la ligne avec : la roulette (15 degrés) ou avec alt et la roulette (1 degré)
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </div>
+</div>

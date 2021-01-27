@@ -1,0 +1,66 @@
+.color-container {
+    margin-top: 8px;
+    max-width: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field {
+    margin-left: 13px;
+    width: 90%;
+}
+
+mat-divider {
+    visibility: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#previewColor {
+    margin-left: 1px;
+    padding-left: 1px;
+    display: none;
+}
+
+#previewColorHexa {
+    margin-left: 50px;
+    bottom: 15px;
+}
+
+.colors div {
+    float: left;
+    clear: none;
+    margin-right: 40px;
+    width: 68px;
+}
+
+#primaryColorTitle {
+    padding-left: 20px;
+}
+
+#primaryColor {
+    width: 40px;
+    height: 40px;
+    margin-left: 23px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#primaryColorHexa {
+    padding-left: 48px;
+}
+
+#secondaryColor {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#secondaryColorHexa {
+    padding-right: 20px;
+    margin-left: -4px;
+}

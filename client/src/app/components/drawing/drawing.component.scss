@@ -1,0 +1,40 @@
+canvas {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    box-shadow: 0 1px 5px -3px black;
+}
+
+#canvas-container {
+    position: relative;
+}
+
+#previewLayer {
+    z-index: 5;
+}
+
+#baseCanvas {
+    z-index: 4;
+}
+
+#whiteBackground {
+    position: absolute;
+    z-index: 3;
+    background-color: white;
+}
+
+#greyBackground {
+    z-index: 2;
+    background-color: grey;
+}
+
+#cursorCanvas {
+    z-index: 4;
+    position: absolute;
+    box-shadow: 0 1px 5px -3px white;
+}
+
+#gridLayer {
+    z-index: 6;
+    position: absolute;
+}

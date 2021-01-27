@@ -1,0 +1,122 @@
+.color-container {
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  margin-left: 13px;
+  width: 90%;
+}
+
+mat-divider {
+  visibility: hidden;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#previewColor {
+  width: 40px;
+  height: 40px;
+  margin-left: 85px;
+  padding-left: 4px;
+}
+
+#previewColorHexa {
+  margin-left: 50px;
+  bottom: 10px;
+}
+
+.colors div {
+  float: left;
+  clear: none;
+  margin-right: 40px;
+  width: 68px;
+}
+
+#primaryColorTitle {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#primaryColor {
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  &:hover {
+      cursor: pointer;
+  }
+}
+
+#primaryColorHexa {
+  margin-left: 50px;
+  margin-right: auto;
+  text-align: center;
+}
+
+#previewSquare {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 10px;
+  z-index: 1;
+  &:hover {
+      cursor: pointer;
+  }
+}
+
+#squarePalette {
+  margin-top: 10px;
+  margin-left: 10px;
+  z-index: 0;
+}
+
+#previewHorizontal {
+  margin-left: 13px;
+  top: 220px;
+  position: absolute;
+  z-index: 1;
+  &:hover {
+      cursor: pointer;
+  }
+}
+
+#horizontalPalette {
+  margin-left: 13px;
+  top: 220px;
+  position: absolute;
+  z-index: 0;
+}
+
+#opacitySliderPreview {
+  margin-left: 13px;
+  top: 250px;
+  position: absolute;
+  z-index: 1;
+  &:hover {
+      cursor: pointer;
+  }
+}
+
+#opacitySlider {
+  margin-left: 13px;
+  top: 250px;
+  position: absolute;
+  z-index: 0;
+}
+
+
+#table {
+  padding-bottom: 20px;
+  margin-top: -45px;
+}
+
+mat-slider {
+  width: 90%;
+}
+
+#tolerance{
+  text-align: center;
+}

@@ -1,0 +1,40 @@
+<div class="color-container">
+    <table>
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <div>Aperçu</div>
+            <canvas id="previewColor" #previewColor width="40px" height="40px"></canvas>
+            <mat-grid-tile id="previewColorHexa">{{ this.colorService.previewColor }}</mat-grid-tile>
+        </mat-grid-list>
+    </table>
+    <br />
+    <table id="table">
+        <th>
+            <div id="primaryColorTitle">Primaire</div>
+            <mat-grid-list cols="2" rowHeight="2:1">
+                <div id="primaryColor" [ngStyle]="{ 'background-color': this.colorService.primaryColor }"></div>
+                <span></span>
+                <mat-grid-tile id="primaryColorHexa">{{ this.colorService.primaryColor }}</mat-grid-tile>
+            </mat-grid-list>
+        </th>
+        <br />
+        <div id="swapbutton" (click)="this.colorService.swapColor()">
+            <button mat-raised-button color="white"><mat-icon>swap_horiz</mat-icon></button>
+        </div>
+
+        <th>
+            <div>Secondaire</div>
+            <mat-grid-list cols="2" rowHeight="2:1">
+                <div id="secondaryColor" [ngStyle]="{ 'background-color': this.colorService.secondaryColor }"></div>
+                <span></span>
+                <mat-grid-tile id="secondaryColorHexa">{{ this.colorService.secondaryColor }}</mat-grid-tile>
+            </mat-grid-list>
+        </th>
+    </table>
+    <br />
+    <div>
+        <div>Sélectionner la couleur principale avec un clic gauche</div>
+        <div>Sélectionner la couleur secondaire avec un clic droit</div>
+        <br />
+        <div>Resélectionner l'outil d'usage pour appliquer vos changements</div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<div>
+    <h1>Carrousel d'images</h1>
+</div>
+<div>
+    <button mat-raised-button (click)="reset()">Réinitialise tout</button>
+    <div *ngIf="!getPictureLength()"><p>Aucune image retrouvée. Veuillez changer le critère de recherche ou tout réinitialiser.</p></div>
+</div>
+<div *ngIf="getPictureLength()">
+    <mat-grid-list cols="3" rowH eight="1:1">
+        <mat-grid-tile *ngIf="getPictures().length >= 1">
+            <mat-card class="card-picture">
+                <mat-card-header>
+                    <mat-card-title>{{ threePictures[0].name }}</mat-card-title>
+                    <mat-card-subtitle>
+                        {{ threePictures[0].date }}
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <img #previewImage1 />
+                <mat-card-content>
+                    <div *ngFor="let element of threePictures[0].labels"># {{ element.label }}</div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="loadPicture(threePictures[0])">Charger</button>
+                    <button mat-button (click)="deletePictureInDataBase(threePictures[0])">Supprimer</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile *ngIf="getPictureLength() >= 2">
+            <mat-card class="card-picture">
+                <mat-card-header>
+                    <mat-card-title>{{ threePictures[1].name }}</mat-card-title>
+                    <mat-card-subtitle>
+                        {{ threePictures[1].date }}
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <img #previewImage2 />
+                <mat-card-content>
+                    <div *ngFor="let element of threePictures[1].labels"># {{ element.label }}</div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="loadPicture(threePictures[1])">Charger</button>
+                    <button mat-button (click)="deletePictureInDataBase(threePictures[1])">Supprimer</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile *ngIf="getPictureLength() >= 3">
+            <mat-card class="card-picture">
+                <mat-card-header>
+                    <mat-card-title>{{ threePictures[2].name }}</mat-card-title>
+                    <mat-card-subtitle>
+                        {{ threePictures[2].date }}
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <img #previewImage3 />
+                <mat-card-content>
+                    <div *ngFor="let element of threePictures[1].labels"># {{ element.label }}</div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="loadPicture(threePictures[2])">Charger</button>
+                    <button mat-button (click)="deletePictureInDataBase(threePictures[2])">Supprimer</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <button mat-raised-button class="sub-button-cart" (click)="prior()">Antérieur</button>
+    <button mat-raised-button class="sub-button-cart" (click)="next()">Suivant</button>
+</div>
+<div>
+    <h2>recherche</h2>
+    <mat-form-field>
+        <mat-label>critère de recherche</mat-label>
+
+        <mat-select matNativeControl required [(ngModel)]="selectedType" [(value)]="selectedType">
+            <mat-option value="name">Nom</mat-option>
+            <mat-option value="date">Date</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="selectedType === 'name'">
+        <mat-label>Entrer le nom de l'image qui commence par :</mat-label>
+        <input matInput [(ngModel)]="name" />
+    </mat-form-field>
+    <mat-form-field *ngIf="selectedType === 'date'">
+        <mat-label>Entrer la date :</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="myDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button (click)="setSearchCriteria()">Soumettre</button>
+</div>
+<div>
+    <h1>Liste d'étiquettes</h1>
+    <p *ngIf="!dataLabel.length">Appuyer sur le button "Rafraichir la liste" étiquettes</p>
+    <button mat-raised-button (click)="refresh()">Rafraichir la liste</button>
+    <div>
+        <mat-button-toggle
+            *ngFor="let element of dataLabel"
+            class="sub-button"
+            mat-button
+            color="primary"
+            id="{{ element.label }}"
+            (click)="isLabelExisting(element.label)"
+            >{{ element.label }}</mat-button-toggle
+        >
+    </div>
+</div>
+<button mat-raised-button mat-dialog-close>Fermé</button>

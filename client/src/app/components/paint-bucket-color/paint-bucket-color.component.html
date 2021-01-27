@@ -1,0 +1,58 @@
+<div class="color-container">
+    <canvas
+        id="previewSquare"
+        [attr.WIDTH]="WIDTH"
+        [attr.height]="SQUARE_HEIGHT"
+        #previewSquare
+        (mousemove)="onMouseOverSquare($event)"
+        (click)="onMouseOverSquareClick($event)"
+    ></canvas>
+    <canvas id="squarePalette" [attr.width]="WIDTH" [attr.height]="SQUARE_HEIGHT" #squarePalette></canvas>
+    <mat-divider></mat-divider>
+    <canvas
+        id="previewHorizontal"
+        #previewHorizontal
+        [attr.WIDTH]="WIDTH"
+        [attr.height]="horizontalHeight"
+        (mousemove)="onMouseOverHorizontal($event)"
+        (click)="onMouseOverHorizontalClick($event)"
+    ></canvas>
+    <canvas id="horizontalPalette" #horizontalPalette [attr.width]="WIDTH" [attr.height]="horizontalHeight"></canvas>
+    <mat-divider></mat-divider>
+
+    <canvas
+        id="opacitySliderPreview"
+        #opacitySliderPreview
+        [attr.WIDTH]="WIDTH"
+        [attr.height]="horizontalHeight"
+        (click)="onMouseOverOpacitySliderClick($event)"
+    ></canvas>
+    <canvas id="opacitySlider" #opacitySlider [attr.width]="WIDTH" [attr.height]="horizontalHeight"> </canvas>
+    <mat-divider></mat-divider>
+
+    <table>
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <div>Aperçu</div>
+            <div id="previewColor" [ngStyle]="{ 'background-color': colorService.previewColor }"></div>
+            <mat-grid-tile id="previewColorHexa">{{ colorService.previewColor }}</mat-grid-tile>
+        </mat-grid-list>
+    </table>
+    <mat-divider></mat-divider>
+    <table id="table">
+        <th>
+            <div id="primaryColorTitle">Primaire</div>
+            <mat-grid-list cols="2" rowHeight="2:1" (click)="primaryClick()">
+                <div
+                    id="primaryColor"
+                    [style.border]="colorService.isClicked ? '2px solid red' : ''"
+                    [ngStyle]="{ 'background-color': colorService.primaryColor }"
+                ></div>
+                <span></span>
+                <mat-grid-tile id="primaryColorHexa">{{ colorService.primaryColor }}</mat-grid-tile>
+            </mat-grid-list>
+        </th>
+        <br />
+    </table>
+    <p id="tolerance">Choix de la tolérance (en %) :</p>
+    <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1" min="0" max="100" [(ngModel)]="paintBucketService.tolerance"></mat-slider>
+</div>

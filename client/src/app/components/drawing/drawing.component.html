@@ -1,0 +1,41 @@
+<div id="canvas-container" [ngStyle]="{ 'min-width.px': canvasResizeService.resizeWidth, 'min-height.px': canvasResizeService.resizeHeight }">
+    <canvas id="previewLayer" #previewCanvas [attr.width]="width" [attr.height]="height" [ngStyle]="{ cursor: cursorUsed }"></canvas>
+    <canvas id="baseCanvas" #baseCanvas [attr.width]="width" [attr.height]="height"></canvas>
+    <div id="whiteBackground" [ngStyle]="{ 'width.px': width, 'height.px': height }"></div>
+    <canvas
+        id="canvasResizePreview"
+        #canvasResizingPreview
+        [attr.width]="canvasResizeService.resizeWidth"
+        [attr.height]="canvasResizeService.resizeHeight"
+        [ngStyle]="{
+            'z-index': canvasResizeService.resizeIndex,
+            cursor: canvasResizeService.resizeCursor
+        }"
+        (mousedown)="onResizeDown($event)"
+        (mousemove)="onResizeMove($event)"
+        (mouseup)="onResizeUp($event)"
+        (mouseout)="onResizeOut($event)"
+    ></canvas>
+    <canvas
+        id="cursorCanvas"
+        #cursorCanvas
+        width="40px"
+        height="40px"
+        [style.display]="toolService.currentToolName == dropper || stamp ? 'inline-block' : 'none'"
+        [ngStyle]="{ cursor: cursorUsed }"
+    ></canvas>
+    <canvas
+        id="gridLayer"
+        #gridLayer
+        [attr.width]="width"
+        [attr.height]="height"
+        [ngStyle]="{ cursor: cursorUsed }"
+        (mousedown)="onMouseDown($event)"
+        (mousemove)="onMouseMove($event); onMouseOverMainCanvas($event)"
+        (mouseup)="onMouseUp($event)"
+        (mouseout)="onMouseOut($event)"
+        (mouseenter)="onMouseEnter($event)"
+    >
+    </canvas>
+    <div id="greyBackground" [ngStyle]="{ 'width.px': canvasResizeService.resizeWidth, 'height.px': canvasResizeService.resizeHeight }"></div>
+</div>

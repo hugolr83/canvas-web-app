@@ -1,0 +1,24 @@
+<mat-slider min="0" max="360" value="1" step="1" [(ngModel)]="this.stampService.angle"> </mat-slider>
+<div>Angle de l'étampe : {{ this.stampService.angle }}</div>
+<br />
+
+<div class="row">
+    <button mat-raised-button class="add" style="text-align: left" (click)="this.stampService.increaseSize()">Augmenter</button>
+    &nbsp; &nbsp; &nbsp;
+    <button mat-raised-button class="substract" (click)="this.stampService.decreaseSize()">Diminuer</button>
+</div>
+<br />
+<br />
+<div>Largeur de l'étampe : {{ this.drawingService.cursorCtx.canvas.width }}</div>
+<div>Taille de l'étampe : {{ this.drawingService.cursorCtx.canvas.height }}</div>
+<br />
+
+<canvas #stamp1 class="stamp1" (click)="pickStamp('assets/stamp1.png')"></canvas>
+<br />
+<canvas #stamp2 class="stamp2" (click)="pickStamp('assets/stamp2.png')"></canvas>
+<br />
+<canvas #stamp3 class="stamp3" (click)="pickStamp('assets/stamp3.png')"></canvas>
+<br />
+<canvas #stamp4 class="stamp4" (click)="pickStamp('assets/stamp4.png')"></canvas>
+<br />
+<canvas #stamp5 class="stamp5" (click)="pickStamp('assets/stamp5.png')"></canvas>

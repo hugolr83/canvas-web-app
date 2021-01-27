@@ -1,0 +1,158 @@
+.color-container {
+    max-width: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-form-field {
+    margin-left: 13px;
+    width: 90%;
+}
+
+mat-divider {
+    visibility: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#previewColor {
+    width: 40px;
+    height: 40px;
+    margin-left: 85px;
+    padding-left: 4px;
+}
+
+#previewColorHexa {
+    margin-left: 50px;
+    bottom: 15px;
+}
+
+.colors div {
+    float: left;
+    clear: none;
+    margin-right: 40px;
+    width: 68px;
+}
+
+#primaryColorTitle {
+    padding-left: 20px;
+}
+
+#primaryColor {
+    width: 40px;
+    height: 40px;
+    margin-left: 23px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#primaryColorHexa {
+    padding-left: 48px;
+}
+
+#secondaryName {
+    margin-left: 2px;
+}
+
+#secondaryColor {
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#secondaryColorHexa {
+    padding-right: 20px;
+    margin-left: 6px;
+}
+
+#previewSquare {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+    z-index: 1;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#squarePalette {
+    margin-top: 10px;
+    margin-left: 10px;
+    z-index: 0;
+}
+
+#previewHorizontal {
+    margin-left: 13px;
+    top: 220px;
+    position: absolute;
+    z-index: 1;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#horizontalPalette {
+    margin-left: 13px;
+    top: 220px;
+    position: absolute;
+    z-index: 0;
+}
+
+#opacitySliderPreview {
+    margin-left: 13px;
+    top: 250px;
+    position: absolute;
+    z-index: 1;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#previewTheColor {
+    margin-left: 5px;
+}
+
+#opacitySlider {
+    margin-left: 13px;
+    top: 250px;
+    position: absolute;
+    z-index: 0;
+}
+
+#swapButton {
+    top: 5px !important;
+    left: 5px !important;
+}
+
+#table {
+    padding-bottom: 20px;
+    margin-top: -45px;
+}
+
+.lastColorsContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    margin-right: 8px;
+}
+
+.lastColor {
+    &:hover {
+        cursor: pointer;
+    }
+    height: 10px;
+    border-radius: 15px;
+    width: 10px;
+    border: black;
+    margin: 5px;
+}
+
+#validationButton {
+    position: relative;
+    margin-left: 12px;
+    margin-right: 9px;
+}

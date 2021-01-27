@@ -1,0 +1,20 @@
+.container {
+    height: 100%;
+    display: flex;
+}
+
+app-sidebar {
+    background-color: rgb(245, 245, 245);
+    min-height: auto;
+}
+
+.drawing-container {
+    overflow: auto;
+    flex: 1 1 auto;
+}
+
+.drawing {
+    display: grid;
+    width: min-content;
+    outline: none;
+}
